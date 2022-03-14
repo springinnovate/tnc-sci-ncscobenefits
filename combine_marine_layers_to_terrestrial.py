@@ -113,14 +113,14 @@ def main():
                     target_path_list=[raster_path],
                     task_name=f'rasterize {hab_path}')
                 rasterize_task_list.append(rasterize_task)
-                hab_path_list.append(raster_path)
+                hab_path_list.append((conversion, raster_path))
             else:
                 hab_path_list.append((conversion, hab_path))
                 rasterize_task = empty_task
 
             aligned_path = os.path.join(
                 ALIGNED_DIR, lulc_key,
-                f'aligned_{os.path.basename(hab_path_list[-1])}')
+                f'aligned_{os.path.basename(hab_path_list[-1][1])}')
             os.makedirs(os.path.dirname(aligned_path), exist_ok=True)
             warp_task = task_graph.add_task(
                 func=geoprocessing.warp_raster,
