@@ -163,12 +163,10 @@ def _convert_hab_op(lulc_array, *hab_conversion_list):
     result = lulc_array.copy()
     hab_iter = iter(hab_conversion_list)
     for mask_array, conversion in zip(hab_iter, hab_iter):
-        print(mask_array)
-        print(conversion)
         if isinstance(conversion, int):
-            result[mask_array==1] = conversion
+            result[mask_array == 1] = conversion
         elif conversion.startswith('+'):
-            result[mask_array==1] += int(conversion[1:])
+            result[mask_array == 1] += int(conversion[1:])
         else:
             raise ValueError(f'unknown conversion: {conversion}')
     return result
