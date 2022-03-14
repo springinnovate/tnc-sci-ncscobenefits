@@ -22,9 +22,9 @@ logging.getLogger('ecoshard.taskgraph').setLevel(logging.WARN)
 LOGGER = logging.getLogger(__name__)
 
 LANDCOVER_DICT = {
-    'esa_2020': (
-        'https://storage.googleapis.com/ecoshard-root/esa_lulc_smoothed/'
-        'ESACCI-LC-L4-LCCS-Map-300m-P1Y-2020-v2.1.1_md5_2ed6285e6f8ec1e7e0b75309cc6d6f9f.tif'),
+    # 'esa_2020': (
+    #     'https://storage.googleapis.com/ecoshard-root/esa_lulc_smoothed/'
+    #     'ESACCI-LC-L4-LCCS-Map-300m-P1Y-2020-v2.1.1_md5_2ed6285e6f8ec1e7e0b75309cc6d6f9f.tif'),
     'esa_1992': (
         'https://storage.googleapis.com/ecoshard-root/esa_lulc/'
         'ESACCI-LC-L4-LCCS-Map-300m-P1Y-1992-v2.0.7cds_compressed_md5_60cf30.tif'),
@@ -58,7 +58,6 @@ def _download_task(task_graph, url, target_path):
     download_task = task_graph.add_task(
         func=ecoshard.download_url,
         args=(url, target_path),
-        kwargs={'skip_if_target_exists': True},
         target_path_list=[target_path],
         task_name=f'downloading {os.path.basename(url)}')
     return download_task
