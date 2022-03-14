@@ -73,7 +73,7 @@ def _rasterize(
 
 def main():
     """Entry point."""
-    task_graph = taskgraph.TaskGraph(WORKSPACE_DIR, -1)
+    task_graph = taskgraph.TaskGraph(WORKSPACE_DIR, len(COASTAL_HAB_DICT))
     landcover_paths = {}
     for key, url in LANDCOVER_DICT.items():
         target_path = os.path.join(ECOSHARD_DIR, os.path.basename(url))
@@ -93,9 +93,12 @@ def main():
         converted_lulc_path = os.path.join(
             WORKSPACE_DIR, f'{os.path.basename(lulc_path)}')
 
+        lulc_info = geoprocessing.get_raster_info(lulc_path)
+
         hab_path_list = []
         aligned_list = []
         rasterize_task_list = []
+        warp_task_list = []
         for key, hab_path in list(hab_paths.values()):
             # if path is a vector, rasterize it and set to new path
             if hab_path.endswith('.gpkg'):
@@ -112,25 +115,28 @@ def main():
                 hab_path_list.append(raster_path)
             else:
                 hab_path_list.append(hab_path)
+                rasterize_task = task_graph.add_task()
+
             aligned_path = os.path.join(
                 ALIGNED_DIR, lulc_key,
                 f'aligned_{os.path.basename(hab_path_list[-1])}')
             os.makedirs(os.path.dirname(aligned_path), exist_ok=True)
+            warp_task = task_graph.add_task(
+                func=geoprocessing.warp_raster,
+                args=(
+                    hab_path_list[-1], lulc_info['pixel_size'],
+                    aligned_path, 'near'),
+                kwargs={
+                    'target_bb': lulc_info['bounding_box'],
+                    'target_projection_wkt': lulc_info['projection_wkt'],
+                    'working_dir': os.path.dirname(aligned_path)},
+                dependent_task_list=[rasterize_task],
+                target_path_list=[aligned_path])
+            warp_task_list.append(warp_task)
             aligned_list.append(aligned_path)
             hab_paths[key] = aligned_path
 
-        lulc_info = geoprocessing.get_raster_info(lulc_path)
-        align_task = task_graph.add_task(
-            func=geoprocessing.align_and_resize_raster_stack,
-            args=(
-                hab_path_list, aligned_list, len(aligned_list)*['near'],
-                lulc_info['pixel_size'], 'union'),
-            kwargs={
-                'target_projection_wkt': lulc_info['projection_wkt'],
-                },
-            dependent_task_list=rasterize_task_list,
-            target_path_list=aligned_list,
-            task_name=f'align for {lulc_key}')
+        warp_task.join()
 
         # this creates a list of tuples of the form
         # [(path0, 1), (conversion0, 'raw'), (path1, 1), ...]
@@ -143,7 +149,7 @@ def main():
             args=(
                 [(lulc_path, 1)] + hab_conversion_list,
                 _convert_hab_op, converted_lulc_path, gdal.GDT_Byte, 0),
-            dependent_task_list=[align_task],
+            dependent_task_list=warp_task_list,
             target_path_list=[converted_lulc_path],
             task_name=f'convert {lulc_path}')
 
