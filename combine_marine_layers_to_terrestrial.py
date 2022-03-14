@@ -31,11 +31,11 @@ LANDCOVER_DICT = {
 COASTAL_HAB_DICT = {
     'mangrove': (
         171,  # 170 is tree cover saline, so 171 makes it special
-        'https://storage.googleapis.com/critical-natural-capital-ecoshards/'
+        'https://storage.googleapis.com/ecoshard-root/critical-natural-capital-ecoshards/'
         'cv_layers/ipbes-cv_mangrove_md5_0ec85cb51dab3c9ec3215783268111cc.tif'),
     'saltmarsh': (
         181,  # 180 is shrub or herbacious flooded, but 181 makes it special
-        'https://storage.googleapis.com/critical-natural-capital-ecoshards/'
+        'https://storage.googleapis.com/ecoshard-root/critical-natural-capital-ecoshards/'
         'cv_layers/ipbes-cv_saltmarsh_md5_203d8600fd4b6df91f53f66f2a011bcd.tif'),
     # 'peat': (
     #     '+3',  # this adds "3" to whatever the landcover code is
