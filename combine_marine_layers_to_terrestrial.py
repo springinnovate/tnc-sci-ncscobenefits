@@ -92,7 +92,7 @@ def main():
     for lulc_key, lulc_path in landcover_paths.items():
         LOGGER.debug(f'converting {lulc_path}')
         converted_lulc_path = os.path.join(
-            WORKSPACE_DIR, f'{os.path.basename(lulc_path)}')
+            WORKSPACE_DIR, f'marine_{os.path.basename(lulc_path)}')
 
         lulc_info = geoprocessing.get_raster_info(lulc_path)
 
@@ -163,10 +163,12 @@ def _convert_hab_op(lulc_array, *hab_conversion_list):
     result = lulc_array.copy()
     hab_iter = iter(hab_conversion_list)
     for mask_array, conversion in zip(hab_iter, hab_iter):
+        print(mask_array)
+        print(conversion)
         if isinstance(conversion, int):
-            result[mask_array] = conversion
+            result[mask_array==1] = conversion
         elif conversion.startswith('+'):
-            result[mask_array] += int(conversion[1:])
+            result[mask_array==1] += int(conversion[1:])
         else:
             raise ValueError(f'unknown conversion: {conversion}')
     return result
