@@ -26,7 +26,7 @@ LANDCOVER_DICT = {
         'https://storage.googleapis.com/ecoshard-root/esa_lulc_smoothed/'
         'ESACCI-LC-L4-LCCS-Map-300m-P1Y-2020-v2.1.1_md5_2ed6285e6f8ec1e7e0b75309cc6d6f9f.tif'),
     'esa_1992': (
-        'https://storage.googleapis.com/ecoshard-root/esa_lulc_smoothed/'
+        'https://storage.googleapis.com/ecoshard-root/esa_lulc/'
         'ESACCI-LC-L4-LCCS-Map-300m-P1Y-1992-v2.0.7cds_compressed_md5_60cf30.tif'),
 }
 
