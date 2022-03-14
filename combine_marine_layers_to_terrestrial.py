@@ -37,9 +37,9 @@ COASTAL_HAB_DICT = {
         181,  # 180 is shrub or herbacious flooded, but 181 makes it special
         'https://storage.googleapis.com/critical-natural-capital-ecoshards/'
         'cv_layers/ipbes-cv_saltmarsh_md5_203d8600fd4b6df91f53f66f2a011bcd.tif'),
-    'peat': (
-        '+3',  # this adds "3" to whatever the landcover code is
-        'https://archive.researchdata.leeds.ac.uk/251/'),
+    # 'peat': (
+    #     '+3',  # this adds "3" to whatever the landcover code is
+    #     'https://archive.researchdata.leeds.ac.uk/251/'),
 }
 
 WORKSPACE_DIR = 'workspace_combine_marine_terrestrial'
