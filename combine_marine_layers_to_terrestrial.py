@@ -25,7 +25,7 @@ LANDCOVER_DICT = {
     'esa_2020': (
         'https://storage.googleapis.com/ecoshard-root/esa_lulc_smoothed/'
         'ESACCI-LC-L4-LCCS-Map-300m-P1Y-2020-v2.0.7_smooth_compressed.tif'),
-    #esa_1992: https://esa-worldcover.org/en/data-access
+    #esa_1992: https://esa-worldcover.org/en/data-access, also maybe AWS?
 }
 
 COASTAL_HAB_DICT = {
@@ -44,11 +44,15 @@ COASTAL_HAB_DICT = {
 
 WORKSPACE_DIR = 'workspace_combine_marine_terrestrial'
 ECOSHARD_DIR = os.path.join(WORKSPACE_DIR, 'ecoshards')
+RASTERIZED_DIR = os.path.join(WORKSPACE_DIR, 'rasterized')
+ALIGNED_DIR = os.path.join(WORKSPACE_DIR, 'aligned')
+
+for dir_path in [WORKSPACE_DIR, ECOSHARD_DIR, RASTERIZED_DIR]:
+    os.makedirs(dir_path, exist_ok=True)
 
 
 def _download_task(task_graph, url, target_path):
     """Wrapper for taskgraph call."""
-    return
     download_task = task_graph.add_task(
         func=ecoshard.download_url,
         args=(url, target_path),
@@ -58,9 +62,17 @@ def _download_task(task_graph, url, target_path):
     return download_task
 
 
+def _rasterize(
+        base_raster_path, vector_path, target_raster_path):
+    """Rasterize vector to target that maps to base."""
+    geoprocessing.new_raster_from_base(
+        base_raster_path, target_raster_path, gdal.GDT_Byte, [0])
+    geoprocessing.rasterize(
+        vector_path, target_raster_path, burn_values=[1])
+
+
 def main():
     """Entry point."""
-    os.makedirs(WORKSPACE_DIR, exist_ok=True)
     task_graph = taskgraph.TaskGraph(WORKSPACE_DIR, -1)
     landcover_paths = {}
     for key, url in LANDCOVER_DICT.items():
@@ -81,6 +93,45 @@ def main():
         converted_lulc_path = os.path.join(
             WORKSPACE_DIR, f'{os.path.basename(lulc_path)}')
 
+        hab_path_list = []
+        aligned_list = []
+        rasterize_task_list = []
+        for key, hab_path in list(hab_paths.values()):
+            # if path is a vector, rasterize it and set to new path
+            if hab_path.endswith('.gpkg'):
+                raster_path = os.path.join(
+                    RASTERIZED_DIR, lulc_key, os.path.basename(
+                        os.path.splitext(hab_path)[0]))
+                os.makedirs(os.dirname(raster_path), exist_ok=True)
+                rasterize_task = task_graph.add_task(
+                    func=_rasterize,
+                    args=(lulc_path, hab_path, raster_path),
+                    target_path_list=[raster_path],
+                    task_id=f'rasterize {hab_path}')
+                rasterize_task_list.append(rasterize_task)
+                hab_path_list.append(raster_path)
+            else:
+                hab_path_list.append(hab_path)
+            aligned_path = os.path.join(
+                ALIGNED_DIR, lulc_key,
+                f'aligned_{os.path.basename(hab_path_list[-1])}')
+            os.makedirs(os.dirname(aligned_path), exist_ok=True)
+            aligned_list.append(aligned_path)
+            hab_paths[key] = aligned_path
+
+        lulc_info = geoprocessing.get_raster_info(lulc_path)['pixel_size']
+        align_task = task_graph.add_task(
+            func=geoprocessing.align_and_resize_raster_stack,
+            args=(
+                hab_path_list, aligned_list, len(aligned_list)*['near'],
+                lulc_info['pixel_size'], 'union'),
+            kwargs={
+                'target_projection_wkt': lulc_info['projection_wkt'],
+                },
+            dependent_task_list=rasterize_task_list,
+            target_path_list=aligned_list,
+            task_name=f'align for {lulc_key}')
+
         # this creates a list of tuples of the form
         # [(path0, 1), (conversion0, 'raw'), (path1, 1), ...]
         hab_conversion_list = [
@@ -92,6 +143,7 @@ def main():
             args=(
                 [(lulc_path, 1)] + hab_conversion_list,
                 _convert_hab_op, converted_lulc_path, gdal.GDT_Byte, 0),
+            dependent_task_list=[align_task],
             target_path_list=[converted_lulc_path],
             task_id=f'convert {lulc_path}')
 
