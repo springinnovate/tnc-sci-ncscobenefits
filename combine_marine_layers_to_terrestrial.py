@@ -74,6 +74,7 @@ def _rasterize(
 def main():
     """Entry point."""
     task_graph = taskgraph.TaskGraph(WORKSPACE_DIR, len(COASTAL_HAB_DICT))
+    empty_task = task_graph.add_task()
     landcover_paths = {}
     for key, url in LANDCOVER_DICT.items():
         target_path = os.path.join(ECOSHARD_DIR, os.path.basename(url))
@@ -115,7 +116,7 @@ def main():
                 hab_path_list.append(raster_path)
             else:
                 hab_path_list.append(hab_path)
-                rasterize_task = task_graph.add_task()
+                rasterize_task = empty_task
 
             aligned_path = os.path.join(
                 ALIGNED_DIR, lulc_key,
