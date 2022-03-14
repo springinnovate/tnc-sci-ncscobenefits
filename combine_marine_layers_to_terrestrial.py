@@ -100,7 +100,7 @@ def main():
         aligned_list = []
         rasterize_task_list = []
         warp_task_list = []
-        for key, hab_path in list(hab_paths.values()):
+        for key, (conversion, hab_path) in list(hab_paths.values()):
             # if path is a vector, rasterize it and set to new path
             if hab_path.endswith('.gpkg'):
                 raster_path = os.path.join(
@@ -115,7 +115,7 @@ def main():
                 rasterize_task_list.append(rasterize_task)
                 hab_path_list.append(raster_path)
             else:
-                hab_path_list.append(hab_path)
+                hab_path_list.append((conversion, hab_path))
                 rasterize_task = empty_task
 
             aligned_path = os.path.join(
@@ -125,7 +125,7 @@ def main():
             warp_task = task_graph.add_task(
                 func=geoprocessing.warp_raster,
                 args=(
-                    hab_path_list[-1], lulc_info['pixel_size'],
+                    hab_path_list[-1][1], lulc_info['pixel_size'],
                     aligned_path, 'near'),
                 kwargs={
                     'target_bb': lulc_info['bounding_box'],
@@ -135,7 +135,7 @@ def main():
                 target_path_list=[aligned_path])
             warp_task_list.append(warp_task)
             aligned_list.append(aligned_path)
-            hab_paths[key] = aligned_path
+            hab_paths[key] = (conversion, aligned_path)
 
         warp_task.join()
 
