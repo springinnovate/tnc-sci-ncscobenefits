@@ -100,7 +100,7 @@ def main():
         aligned_list = []
         rasterize_task_list = []
         warp_task_list = []
-        for key, (conversion, hab_path) in list(hab_paths.values()):
+        for key, (conversion, hab_path) in list(hab_paths.items()):
             # if path is a vector, rasterize it and set to new path
             if hab_path.endswith('.gpkg'):
                 raster_path = os.path.join(
