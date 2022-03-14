@@ -58,7 +58,7 @@ def _download_task(task_graph, url, target_path):
         args=(url, target_path),
         kwargs={'skip_if_target_exists': True},
         target_path_list=[target_path],
-        task_id=f'downloading {os.path.basename(url)}')
+        task_name=f'downloading {os.path.basename(url)}')
     return download_task
 
 
@@ -107,7 +107,7 @@ def main():
                     func=_rasterize,
                     args=(lulc_path, hab_path, raster_path),
                     target_path_list=[raster_path],
-                    task_id=f'rasterize {hab_path}')
+                    task_name=f'rasterize {hab_path}')
                 rasterize_task_list.append(rasterize_task)
                 hab_path_list.append(raster_path)
             else:
@@ -145,7 +145,7 @@ def main():
                 _convert_hab_op, converted_lulc_path, gdal.GDT_Byte, 0),
             dependent_task_list=[align_task],
             target_path_list=[converted_lulc_path],
-            task_id=f'convert {lulc_path}')
+            task_name=f'convert {lulc_path}')
 
     task_graph.join()
     task_graph.close()
