@@ -119,7 +119,7 @@ def main():
             aligned_list.append(aligned_path)
             hab_paths[key] = aligned_path
 
-        lulc_info = geoprocessing.get_raster_info(lulc_path)['pixel_size']
+        lulc_info = geoprocessing.get_raster_info(lulc_path)
         align_task = task_graph.add_task(
             func=geoprocessing.align_and_resize_raster_stack,
             args=(
