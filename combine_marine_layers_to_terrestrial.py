@@ -102,7 +102,7 @@ def main():
                 raster_path = os.path.join(
                     RASTERIZED_DIR, lulc_key, os.path.basename(
                         os.path.splitext(hab_path)[0]))
-                os.makedirs(os.dirname(raster_path), exist_ok=True)
+                os.makedirs(os.path.dirname(raster_path), exist_ok=True)
                 rasterize_task = task_graph.add_task(
                     func=_rasterize,
                     args=(lulc_path, hab_path, raster_path),
@@ -115,7 +115,7 @@ def main():
             aligned_path = os.path.join(
                 ALIGNED_DIR, lulc_key,
                 f'aligned_{os.path.basename(hab_path_list[-1])}')
-            os.makedirs(os.dirname(aligned_path), exist_ok=True)
+            os.makedirs(os.path.dirname(aligned_path), exist_ok=True)
             aligned_list.append(aligned_path)
             hab_paths[key] = aligned_path
 
