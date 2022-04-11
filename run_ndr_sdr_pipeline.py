@@ -69,7 +69,6 @@ EROSIVITY_KEY = 'erosivity'
 ERODIBILITY_KEY = 'erodibility'
 WATERSHEDS_KEY = 'watersheds'
 RUNOFF_PROXY_KEY = 'Precipitation'
-FERTILZER_KEY = 'Fertilizer'
 
 SKIP_TASK_SET = {
     'sdr au_bas_15s_beta_176_'
@@ -91,7 +90,6 @@ ECOSHARD_MAP = {
     ERODIBILITY_KEY: 'https://storage.googleapis.com/ecoshard-root/pasquale/Kfac_SoilGrid1km_GloSEM_v1.1_md5_e1c74b67ad7fdaf6f69f1f722a5c7dfb.tif',
     WATERSHEDS_KEY: 'https://storage.googleapis.com/ecoshard-root/global-invest-sdr-data/watersheds_globe_HydroSHEDS_15arcseconds_md5_c6acf2762123bbd5de605358e733a304.zip',
     RUNOFF_PROXY_KEY: 'https://storage.googleapis.com/ipbes-ndr-ecoshard-data/worldclim_2015_md5_16356b3770460a390de7e761a27dbfa1.tif',
-    FERTILZER_KEY: 'https://storage.googleapis.com/nci-ecoshards/scenarios050420/NCI_Ext_RevB_add_backgroundN_md5_e4a9cc537cd0092d346e4287e7bd4c36.tif',
     }
 
 
@@ -1077,7 +1075,7 @@ def main():
         if run_ndr:
             ndr_workspace_dir = os.path.join(NDR_WORKSPACE_DIR, dem_key)
             if fert_key is None:
-                fert_key = FERTILZER_KEY
+                fert_key = FERTILIZER_CURRENT_KEY
             result_suffix = f'{lulc_key}_{fert_key}'
             _run_ndr(
                 task_graph=task_graph,
