@@ -67,21 +67,8 @@ IC_0_PARAM = 0.5
 DEM_KEY = 'dem'
 EROSIVITY_KEY = 'erosivity'
 ERODIBILITY_KEY = 'erodibility'
-ESA_LULC_KEY = 'esa_lulc'
-SCENARIO_1_LULC_KEY = 'scenario_1_lulc'
-SCENARIO_1_V2_LULC_KEY = 'scenario_1_v2_lulc'
-SDR_BIOPHYSICAL_TABLE_KEY = 'sdr_biophysical_table'
-WATERSHEDS_KEY = 'watersheds'
-WAVES_KEY = 'waves'
-SDR_BIOPHYSICAL_TABLE_LUCODE_KEY = 'ID'
-NDR_BIOPHYSICAL_TABLE_LUCODE_KEY = 'Value'
-
 RUNOFF_PROXY_KEY = 'Precipitation'
 FERTILZER_KEY = 'Fertilizer'
-NDR_BIOPHYSICAL_TABLE_KEY = 'ndr_biophysical_table'
-LULC_MODVCFTREE1KM_KEY = 'esa_modVCFTree1km'
-MODVCFTREE1KM_BIOPHYSICAL_TABLE_KEY = 'tree1km_biophysical_table'
-MODVCFTREE1KM_BIOPHYSICAL_TABLE_LUCODE_ID = 'ID'
 
 SKIP_TASK_SET = {
     'sdr au_bas_15s_beta_176_'
