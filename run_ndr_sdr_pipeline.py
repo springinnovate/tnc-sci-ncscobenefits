@@ -87,91 +87,23 @@ SKIP_TASK_SET = {
     'sdr au_bas_15s_beta_176_'
 }
 
-SCENARIO_2_V3_LULC_KEY = 'Sc2v3_Griscom_CookPatton2050_smithpnv'
-SCENARIO_2_V4_LULC_KEY = 'Sc2v4_Griscom_CookPatton2035_smithpnv'
-SCENARIO_1_V3_LULC_KEY = 'Sc1v3_restoration_pnv0_5_on_ESA2020mVCF'
-SCENARIO_1_V4_LULC_KEY = 'Sc1v4_restoration_pnv0_001_on_ESA2020mVCF'
+LULC_ESA_1992_KEY = 'marine_mod_ESA_1992'
+LULC_ESA_2020_KEY = 'marine_mod_ESA_2020'
 NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY = 'new_esa_biophysical_121621'
 NEW_ESA_BIOPHYSICAL_121621_TABLE_LUCODE_VALUE = 'ID'
-ESAMOD2_LULC_KEY = 'esamod2'
-SC1V5RENATO_GT_0_5_LULC_KEY = 'sc1v5renato_gt_0_5'
-SC1V6RENATO_GT_0_001_LULC_KEY = 'sc1v6renato_gt_0_001'
-SC2V5GRISCOM2035_LULC_KEY = 'sc2v5griscom2035'
-SC2V6GRISCOM2050_LULC_KEY = 'sc2v6griscom2050'
-SC3V1PNVNOAG_LULC_KEY = 'sc3v1pnvnoag'
-SC3V2PNVALL_LULC_KEY = 'sc3v2pnvall'
-LULC_SC1_KEY = 'lulc_sc1'
-LULC_SC2_KEY = 'lulc_sc2'
-LULC_SC3_KEY = 'lulc_sc3'
 FERTILIZER_CURRENT_KEY = 'fertilizer_current'
-FERTILIZER_INTENSIFIED_KEY = 'fertilizer_intensified'
-FERTILIZER_2050_KEY = 'fertilizer_2050'
-HE60PR50_PRECIP_KEY = 'he60pr50'
-NLCD_BIOPHYSICAL_TABLE_KEY = 'nlcd_biophysical'
-NLCD_COTTON_TO_83_KEY = 'nlcd2016_cotton_to_83'
-BASE_NLCD_KEY = 'nlcd2016'
-NLCD_LUCODE = 'lulc'
 
 ECOSHARD_MAP = {
-    ESAMOD2_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/ESAmodVCFv2_md5_05407ed305c24604eb5a38551cddb031.tif',
-    SC1V5RENATO_GT_0_5_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/Sc1v5_md5_85604d25eb189f3566712feb506a8b9f.tif',
-    SC1V6RENATO_GT_0_001_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/Sc1v6_md5_c3539eae022a1bf588142bc363edf5a3.tif',
-    SC2V5GRISCOM2035_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/Sc2v5_md5_a3ce41871b255adcd6e1c65abfb1ddd0.tif',
-    SC2V6GRISCOM2050_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/Sc2v6_md5_dc75e27f0cb49a84e082a7467bd11214.tif',
-    SC3V1PNVNOAG_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/Sc3v1_PNVnoag_md5_c07865b995f9ab2236b8df0378f9206f.tif',
-    SC3V2PNVALL_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/Sc3v2_PNVallhab_md5_419ab9f579d10d9abb03635c5fdbc7ca.tif',
-
-    LULC_SC1_KEY: 'https://storage.googleapis.com/ecoshard-root/cbd/scenarios/ESA_2015_mod_IIS_md5_c5063ced9f1c75ebdf6da2ac006afecd.tif',
-    LULC_SC2_KEY: 'https://storage.googleapis.com/ecoshard-root/cbd/scenarios/reclassified_NCIallag_bare_to_sparse_md5_6683283f691fef0507c6909e9786be1a.tif',
-    LULC_SC3_KEY: 'https://storage.googleapis.com/ecoshard-root/cbd/scenarios/reclassified_PNV_smith_bare_to_sparse_md5_18d50e06130765b80064c824601f7c47.tif',
-
-    BASE_NLCD_KEY: ('https://storage.googleapis.com/ecoshard-root/gee_export/nlcd2016_compressed_md5_f372b.tif', 0),
-    NLCD_COTTON_TO_83_KEY: ('https://storage.googleapis.com/ecoshard-root/cbd/scenarios/cotton_to_83_nlcd2016_md5_f265f5.tif', 0),
-
+    LULC_ESA_1992_KEY: 'https://storage.googleapis.com/sci-ncscobenefits-spring/data/marine_ESACCI-LC-L4-LCCS-Map-300m-P1Y-1992-v2.0.7cds_compressed_md5_83ec1b.tif',
+    LULC_ESA_2020_KEY: 'https://storage.googleapis.com/sci-ncscobenefits-spring/data/marine_ESACCI-LC-L4-LCCS-Map-300m-P1Y-2020-v2.1.1_md5_e6a8da.tif',
     FERTILIZER_CURRENT_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/Nrates_NCIcurrentRevQ_add_smithpnv_background_md5_0cdf5cd1c3ba6e1032fcac63174fa8e1.tif',
-    FERTILIZER_INTENSIFIED_KEY: 'https://storage.googleapis.com/ecoshard-root/cbd/scenarios/finaltotalNfertratesirrigatedRevQ_add_background_md5_b763d688a87360d37868d6a0fbd6b68a.tif',
-    FERTILIZER_2050_KEY: 'https://storage.googleapis.com/ipbes-ndr-ecoshard-data/ag_load_scenarios/ssp3_2050_ag_load_md5_9fab631dfdae22d12cd92bb1983f9ef1.tif',
-
-    LULC_MODVCFTREE1KM_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/ESACCI-LC-L4-LCCS-Map-300m-P1Y-2020_modVCFTree1km_md5_1cef3d5ad126b8bb34deb19d9ffc7d46.tif',
-    ESA_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/esa_lulc_smoothed/ESACCI-LC-L4-LCCS-Map-300m-P1Y-2020-v2.1.1_md5_2ed6285e6f8ec1e7e0b75309cc6d6f9f.tif',
-    #MODVCFTREE1KM_BIOPHYSICAL_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/new_esa_biophysical_121621_md5_b0c83182473b6c2203012385187490e3.csv',
-    #SCENARIO_1_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/restoration_pnv0.0001_on_ESA2020_clip_md5_93d43b6124c73cb5dc21698ea5f9c8f4.tif',
-    #SCENARIO_1_V2_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/restoration_pnv0.0001_on_ESA2020_v2_md5_47613f8e4d340c92b2c481cc8080cc9d.tif',
-    SCENARIO_2_V3_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/Sc2v3_Griscom_CookPatton2050_smithpnv_md5_82c2f863d49f5a25c0b857865bfdb4b0.tif',
-    SCENARIO_2_V4_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/Sc2v4_Griscom_CookPatton2035_smithpnv_md5_ffde2403583e30d7df4d16a0687d71fe.tif',
-    SCENARIO_1_V3_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/Sc1v3_restoration_pnv0.5_on_ESA2020mVCF_md5_403f35b2a8b9b917090703e291f6bc0c.tif',
-    SCENARIO_1_V4_LULC_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/Sc1v4_restoration_pnv0.001_on_ESA2020mVCF_md5_61a44df722532a84a77598fe2a24d46c.tif',
-
     NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/new_esa_biophysical_121621_md5_b0c83182473b6c2203012385187490e3.csv',
-
-    NLCD_BIOPHYSICAL_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/nlcd_biophysical_md5_92b0d4c44168f7595be66daff611203f.csv',
     DEM_KEY: 'https://storage.googleapis.com/ecoshard-root/global-invest-sdr-data/global_dem_3s_md5_22d0c3809af491fa09d03002bdf09748.zip',
     EROSIVITY_KEY: 'https://storage.googleapis.com/ecoshard-root/global-invest-sdr-data/GlobalR_NoPol_compressed_md5_49734c4b1c9c94e49fffd0c39de9bf0c.tif',
     ERODIBILITY_KEY: 'https://storage.googleapis.com/ecoshard-root/pasquale/Kfac_SoilGrid1km_GloSEM_v1.1_md5_e1c74b67ad7fdaf6f69f1f722a5c7dfb.tif',
     WATERSHEDS_KEY: 'https://storage.googleapis.com/ecoshard-root/global-invest-sdr-data/watersheds_globe_HydroSHEDS_15arcseconds_md5_c6acf2762123bbd5de605358e733a304.zip',
     RUNOFF_PROXY_KEY: 'https://storage.googleapis.com/ipbes-ndr-ecoshard-data/worldclim_2015_md5_16356b3770460a390de7e761a27dbfa1.tif',
-    HE60PR50_PRECIP_KEY: 'https://storage.googleapis.com/ipbes-ndr-ecoshard-data/precip_scenarios/he60pr50_md5_829fbd47b8fefb064ae837cbe4d9f4be.tif',
     FERTILZER_KEY: 'https://storage.googleapis.com/nci-ecoshards/scenarios050420/NCI_Ext_RevB_add_backgroundN_md5_e4a9cc537cd0092d346e4287e7bd4c36.tif',
-    'Global polygon': 'https://storage.googleapis.com/critical-natural-capital-ecoshards/cv_layers/ipbes-cv_global_polygon_simplified_geometries_md5_653118dde775057e24de52542b01eaee.gpkg',
-    'Buffered shore': 'https://storage.googleapis.com/critical-natural-capital-ecoshards/cv_layers/buffered_global_shore_5km_md5_a68e1049c1c03673add014cd29b7b368.gpkg',
-    'Shore grid': 'https://storage.googleapis.com/critical-natural-capital-ecoshards/cv_layers/shore_grid_md5_07aea173cf373474c096f1d5e3463c2f.gpkg',
-    WAVES_KEY: 'https://storage.googleapis.com/critical-natural-capital-ecoshards/cv_layers/wave_watch_iii_md5_c8bb1ce4739e0a27ee608303c217ab5b.gpkg.gz',
-    'Coastal DEM': 'https://storage.googleapis.com/critical-natural-capital-ecoshards/cv_layers/global_dem_md5_22c5c09ac4c4c722c844ab331b34996c.tif',
-    'SLR': 'https://storage.googleapis.com/critical-natural-capital-ecoshards/cv_layers/MSL_Map_MERGED_Global_AVISO_NoGIA_Adjust_md5_3072845759841d0b2523d00fe9518fee.tif',
-    'Geomorphology': 'https://storage.googleapis.com/critical-natural-capital-ecoshards/cv_layers/geomorphology_md5_e65eff55840e7a80cfcb11fdad2d02d7.gpkg',
-    'Coastal habitat: reef': 'https://storage.googleapis.com/critical-natural-capital-ecoshards/cv_layers/ipbes-cv_reef_wgs84_compressed_md5_96d95cc4f2c5348394eccff9e8b84e6b.tif',
-    'Coastal habitat: mangrove': 'https://storage.googleapis.com/critical-natural-capital-ecoshards/cv_layers/ipbes-cv_mangrove_md5_0ec85cb51dab3c9ec3215783268111cc.tif',
-    'Coastal habitat: seagrass': 'https://storage.googleapis.com/critical-natural-capital-ecoshards/cv_layers/ipbes-cv_seagrass_md5_a9cc6d922d2e74a14f74b4107c94a0d6.tif',
-    'Coastal habitat: saltmarsh': 'https://storage.googleapis.com/critical-natural-capital-ecoshards/cv_layers/ipbes-cv_saltmarsh_md5_203d8600fd4b6df91f53f66f2a011bcd.tif',
-    'Pollination-dependent yield': 'https://storage.googleapis.com/critical-natural-capital-ecoshards/monfreda_2008_yield_poll_dep_ppl_fed_5min.tif',
-    'Population': 'https://storage.googleapis.com/ecoshard-root/population/lspop2019_compressed_md5_d0bf03bd0a2378196327bbe6e898b70c.tif',
-    'Friction surface': 'https://storage.googleapis.com/ecoshard-root/critical_natural_capital/friction_surface_2015_v1.0-002_md5_166d17746f5dd49cfb2653d721c2267c.tif',
-    'World borders': 'https://storage.googleapis.com/ecoshard-root/critical_natural_capital/TM_WORLD_BORDERS-0.3_simplified_md5_47f2059be8d4016072aa6abe77762021.gpkg',
-    #'Habitat mask ESA': '(need to make from LULC above)',
-    #'Habitat mask Scenario1': '(need to make from LULC above)',
-    #'Coastal population': '(need to make from population above and this mask: https://storage.googleapis.com/ecoshard-root/ipbes-cv/total_pop_masked_by_10m_md5_ef02b7ee48fa100f877e3a1671564be2.tif)',
-    #'Coastal habitat masks ESA': '(will be outputs of CV)',
-    #'Coastal habitat masks Scenario 1': '(will be outputs of CV)',
     }
 
 
@@ -1123,22 +1055,8 @@ def main():
     dem_key = os.path.basename(os.path.splitext(data_map[DEM_KEY])[0])
     sdr_run_set = set()
     for lulc_key, biophysical_table_key, lucode, fert_key in [
-            #(ESAMOD2_LULC_KEY, None),
-            #(SC1V5RENATO_GT_0_5_LULC_KEY, None),
-            #(SC1V6RENATO_GT_0_001_LULC_KEY, None),
-            #(SC2V5GRISCOM2035_LULC_KEY, None),
-            #(SC2V6GRISCOM2050_LULC_KEY, None),
-            #(SC3V1PNVNOAG_LULC_KEY, None),
-            #(SC3V2PNVALL_LULC_KEY, None),
-            #(LULC_SC1_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
-            #(LULC_SC2_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
-            #(LULC_SC3_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
-            #(LULC_SC1_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_LUCODE_VALUE, FERTILIZER_INTENSIFIED_KEY),
-            #(LULC_SC2_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_LUCODE_VALUE, FERTILIZER_INTENSIFIED_KEY),
-            #(LULC_SC1_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_LUCODE_VALUE, FERTILIZER_2050_KEY),
-            #(LULC_SC2_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_LUCODE_VALUE, FERTILIZER_2050_KEY),
-            (NLCD_COTTON_TO_83_KEY, NLCD_BIOPHYSICAL_TABLE_KEY, NLCD_LUCODE, FERTILIZER_CURRENT_KEY),
-            (BASE_NLCD_KEY, NLCD_BIOPHYSICAL_TABLE_KEY, NLCD_LUCODE, FERTILIZER_CURRENT_KEY),
+            (LULC_ESA_1992_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
+            (LULC_ESA_2020_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
             ]:
 
         if run_sdr:
