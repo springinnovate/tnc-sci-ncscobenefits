@@ -1079,7 +1079,7 @@ def main():
             _run_ndr(
                 task_graph=task_graph,
                 workspace_dir=ndr_workspace_dir,
-                runoff_proxy_path=data_map[HE60PR50_PRECIP_KEY],
+                runoff_proxy_path=data_map[RUNOFF_PROXY_KEY],
                 fertilizer_path=data_map[fert_key],
                 biophysical_table_path=data_map[biophysical_table_key],
                 biophysical_table_lucode_field=lucode,
