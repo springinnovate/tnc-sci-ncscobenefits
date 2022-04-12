@@ -77,6 +77,7 @@ SKIP_TASK_SET = {
 LULC_ESA_1992_KEY = 'marine_mod_ESA_1992'
 LULC_ESA_2020_KEY = 'marine_mod_ESA_2020'
 NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY = 'new_esa_biophysical_121621'
+NEW_171_ESA_BIOPHYSICAL_121621_TABLE_KEY = '171_new_esa_biophysical_121621'
 NEW_ESA_LUCODE_VALUE = 'ID'
 FERTILIZER_CURRENT_KEY = 'fertilizer_current'
 
@@ -85,6 +86,7 @@ ECOSHARD_MAP = {
     LULC_ESA_2020_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/marine_ESACCI-LC-L4-LCCS-Map-300m-P1Y-2020-v2.1.1_md5_e6a8da.tif', 0),
     FERTILIZER_CURRENT_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/Nrates_NCIcurrentRevQ_add_smithpnv_background_md5_0cdf5cd1c3ba6e1032fcac63174fa8e1.tif',
     NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/new_esa_biophysical_121621_md5_b0c83182473b6c2203012385187490e3.csv',
+    NEW_171_ESA_BIOPHYSICAL_121621_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/171_new_esa_biophysical_121621_md5_f52b2e.csv',
     DEM_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/global_dem_3s_md5_22d0c3809af491fa09d03002bdf09748.zip',
     EROSIVITY_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/GlobalR_NoPol_compressed_md5_49734c4b1c9c94e49fffd0c39de9bf0c.tif',
     ERODIBILITY_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/Kfac_SoilGrid1km_GloSEM_v1.1_md5_e1c74b67ad7fdaf6f69f1f722a5c7dfb.tif',
@@ -1038,8 +1040,8 @@ def main():
     dem_key = os.path.basename(os.path.splitext(data_map[DEM_KEY])[0])
     sdr_run_set = set()
     for lulc_key, biophysical_table_key, lucode, fert_key in [
-            (LULC_ESA_1992_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
-            (LULC_ESA_2020_KEY, NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
+            (LULC_ESA_1992_KEY, NEW_171_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
+            (LULC_ESA_2020_KEY, NEW_171_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
             ]:
 
         if run_sdr:
