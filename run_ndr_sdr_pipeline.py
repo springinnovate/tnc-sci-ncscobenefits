@@ -85,11 +85,11 @@ ECOSHARD_MAP = {
     LULC_ESA_2020_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/marine_ESACCI-LC-L4-LCCS-Map-300m-P1Y-2020-v2.1.1_md5_e6a8da.tif', 0),
     FERTILIZER_CURRENT_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/Nrates_NCIcurrentRevQ_add_smithpnv_background_md5_0cdf5cd1c3ba6e1032fcac63174fa8e1.tif',
     NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/new_esa_biophysical_121621_md5_b0c83182473b6c2203012385187490e3.csv',
-    DEM_KEY: 'https://storage.googleapis.com/ecoshard-root/global-invest-sdr-data/global_dem_3s_md5_22d0c3809af491fa09d03002bdf09748.zip',
-    EROSIVITY_KEY: 'https://storage.googleapis.com/ecoshard-root/global-invest-sdr-data/GlobalR_NoPol_compressed_md5_49734c4b1c9c94e49fffd0c39de9bf0c.tif',
-    ERODIBILITY_KEY: 'https://storage.googleapis.com/ecoshard-root/pasquale/Kfac_SoilGrid1km_GloSEM_v1.1_md5_e1c74b67ad7fdaf6f69f1f722a5c7dfb.tif',
-    WATERSHEDS_KEY: 'https://storage.googleapis.com/ecoshard-root/global-invest-sdr-data/watersheds_globe_HydroSHEDS_15arcseconds_md5_c6acf2762123bbd5de605358e733a304.zip',
-    RUNOFF_PROXY_KEY: 'https://storage.googleapis.com/ipbes-ndr-ecoshard-data/worldclim_2015_md5_16356b3770460a390de7e761a27dbfa1.tif',
+    DEM_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/global_dem_3s_md5_22d0c3809af491fa09d03002bdf09748.zip',
+    EROSIVITY_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/GlobalR_NoPol_compressed_md5_49734c4b1c9c94e49fffd0c39de9bf0c.tif',
+    ERODIBILITY_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/Kfac_SoilGrid1km_GloSEM_v1.1_md5_e1c74b67ad7fdaf6f69f1f722a5c7dfb.tif',
+    WATERSHEDS_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/watersheds_globe_HydroSHEDS_15arcseconds_md5_c6acf2762123bbd5de605358e733a304.zip',
+    RUNOFF_PROXY_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/worldclim_2015_md5_16356b3770460a390de7e761a27dbfa1.tif',
     }
 
 
