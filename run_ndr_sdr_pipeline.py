@@ -233,7 +233,7 @@ def fetch_and_unpack_data(task_graph):
         target_path_list=[dem_vrt_path],
         task_name=f'unpack {file_map[DEM_KEY]}')
     file_map[DEM_KEY] = dem_vrt_path
-    for compressed_id in [WAVES_KEY, WATERSHEDS_KEY]:
+    for compressed_id in [WATERSHEDS_KEY]:
         _ = task_graph.add_task(
             func=_unpack_archive,
             args=(file_map[compressed_id], data_dir),
@@ -245,9 +245,6 @@ def fetch_and_unpack_data(task_graph):
     # just need the base directory for watersheds
     file_map[WATERSHEDS_KEY] = os.path.join(
         file_map[WATERSHEDS_KEY], 'watersheds_globe_HydroSHEDS_15arcseconds')
-
-    # only need to lose the .gz on the waves
-    file_map[WAVES_KEY] = os.path.splitext(file_map[WAVES_KEY])
 
     return file_map
 
