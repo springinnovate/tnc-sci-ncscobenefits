@@ -84,7 +84,7 @@ FERTILIZER_CURRENT_KEY = 'fertilizer_current'
 ECOSHARD_MAP = {
     LULC_ESA_1992_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/marine_ESACCI-LC-L4-LCCS-Map-300m-P1Y-1992-v2.0.7cds_compressed_md5_83ec1b.tif', 0),
     LULC_ESA_2020_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/marine_ESACCI-LC-L4-LCCS-Map-300m-P1Y-2020-v2.1.1_md5_e6a8da.tif', 0),
-    FERTILIZER_CURRENT_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/Nrates_NCIcurrentRevQ_add_smithpnv_background_md5_0cdf5cd1c3ba6e1032fcac63174fa8e1.tif',
+    FERTILIZER_CURRENT_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/fertilizers/nci_current_n_app_md5_a7e22.tif',
     NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/new_esa_biophysical_121621_md5_b0c83182473b6c2203012385187490e3.csv',
     NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/new_171_181_esa_biophysical_121621_md5_515214.csv',
     DEM_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/global_dem_3s_md5_22d0c3809af491fa09d03002bdf09748.zip',
@@ -1034,7 +1034,7 @@ def main():
             WORKSPACE_DIR, 'global_modified_load_n.tif'),
     }
 
-    run_sdr = True
+    run_sdr = False
     run_ndr = True
     keep_intermediate_files = True
     dem_key = os.path.basename(os.path.splitext(data_map[DEM_KEY])[0])
