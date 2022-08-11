@@ -76,6 +76,8 @@ SKIP_TASK_SET = {
 
 LULC_ESA_1992_KEY = 'marine_mod_ESA_1992'
 LULC_ESA_2020_KEY = 'marine_mod_ESA_2020'
+LULC_REFOREST_KEY = 'tnc_nbs_reforest'
+LULC_AFC_KEY = 'tnc_nbs_afc'
 NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY = 'new_esa_biophysical_121621'
 NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY = 'new_171_181_esa_biophysical_121621'
 NEW_ESA_LUCODE_VALUE = 'ID'
@@ -84,6 +86,8 @@ FERTILIZER_CURRENT_KEY = 'fertilizer_current'
 ECOSHARD_MAP = {
     LULC_ESA_1992_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/marine_ESACCI-LC-L4-LCCS-Map-300m-P1Y-1992-v2.0.7cds_compressed_md5_83ec1b.tif', 0),
     LULC_ESA_2020_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/marine_ESACCI-LC-L4-LCCS-Map-300m-P1Y-2020-v2.1.1_md5_e6a8da.tif', 0),
+    LULC_REFOREST_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/reforestation_full_griscom_extent_compressed_md5_e42c6c.tif', 0),
+    LULC_AFC_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/forest_conversion_2050_md5_abda51.tif', 0),
     FERTILIZER_CURRENT_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/fertilizers/nci_current_n_app_md5_a7e22.tif',
     NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/new_esa_biophysical_121621_md5_b0c83182473b6c2203012385187490e3.csv',
     NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/new_171_181_esa_biophysical_121621_md5_515214.csv',
@@ -1034,14 +1038,14 @@ def main():
             WORKSPACE_DIR, 'global_modified_load_n.tif'),
     }
 
-    run_sdr = False
+    run_sdr = True
     run_ndr = True
     keep_intermediate_files = True
     dem_key = os.path.basename(os.path.splitext(data_map[DEM_KEY])[0])
     sdr_run_set = set()
     for lulc_key, biophysical_table_key, lucode, fert_key in [
-            (LULC_ESA_1992_KEY, NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
-            (LULC_ESA_2020_KEY, NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
+            (LULC_REFOREST_KEY, NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
+            (LULC_AFC_KEY, NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
             ]:
 
         if run_sdr:
