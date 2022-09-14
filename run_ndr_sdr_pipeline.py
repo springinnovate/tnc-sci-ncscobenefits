@@ -78,8 +78,11 @@ LULC_ESA_1992_KEY = 'marine_mod_ESA_1992'
 LULC_ESA_2020_KEY = 'marine_mod_ESA_2020'
 LULC_REFOREST_KEY = 'tnc_nbs_reforest'
 LULC_AFC_KEY = 'tnc_nbs_afc'
+LULC_AGROFOREST_KEY = 'tnc_nbs_agroforest'
+LULC_MANGROVES_KEY = 'tnc_nbs_mangroverest'
 NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY = 'new_esa_biophysical_121621'
 NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY = 'new_171_181_esa_biophysical_121621'
+ESA_AGROFORESTRY_BIOPHYSICAL_TABLE_KEY = 'esa_agroforest_biophysical'
 NEW_ESA_LUCODE_VALUE = 'ID'
 FERTILIZER_CURRENT_KEY = 'fertilizer_current'
 
@@ -88,9 +91,12 @@ ECOSHARD_MAP = {
     LULC_ESA_2020_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/marine_ESACCI-LC-L4-LCCS-Map-300m-P1Y-2020-v2.1.1_md5_e6a8da.tif', 0),
     LULC_REFOREST_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/reforestation_full_griscom_extent_compressed_md5_e42c6c.tif', 0),
     LULC_AFC_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/forest_conversion_2050_md5_abda51.tif', 0),
-    FERTILIZER_CURRENT_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/fertilizers/nci_current_n_app_md5_a7e22.tif',
+    LULC_AGROFOREST_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/agroforestry_2050_md5_e32698.tif', 0),
+    LULC_MANGROVES_KEY: ('https://storage.googleapis.com/sci-ncscobenefits-spring/data/mangroves_restore_2050_md5_eaa31b.tif', 0)
+    FERTILIZER_CURRENT_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/fertilizers/nci_current_n_app_md5_a7e22.tif', #doublecheck that this file's nodata is indeed -9999 next time you download it
     NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/new_esa_biophysical_121621_md5_b0c83182473b6c2203012385187490e3.csv',
     NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/new_171_181_esa_biophysical_121621_md5_515214.csv',
+    ESA_AGROFORESTRY_BIOPHYSICAL_TABLE_KEY: 'https://storage.googleapis.com/sci-ncscobenefits-spring/data/esa_biophysical_091422_md5_9e1eb7.csv'
     DEM_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/global_dem_3s_md5_22d0c3809af491fa09d03002bdf09748.zip',
     EROSIVITY_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/GlobalR_NoPol_compressed_md5_49734c4b1c9c94e49fffd0c39de9bf0c.tif',
     ERODIBILITY_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/Kfac_SoilGrid1km_GloSEM_v1.1_md5_e1c74b67ad7fdaf6f69f1f722a5c7dfb.tif',
@@ -1039,13 +1045,16 @@ def main():
     }
 
     run_sdr = True
-    run_ndr = True
+    run_ndr = False
     keep_intermediate_files = True
     dem_key = os.path.basename(os.path.splitext(data_map[DEM_KEY])[0])
     sdr_run_set = set()
     for lulc_key, biophysical_table_key, lucode, fert_key in [
-            (LULC_REFOREST_KEY, NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
-            (LULC_AFC_KEY, NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
+            #(LULC_REFOREST_KEY, NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
+            #(LULC_AFC_KEY, NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
+            (LULC_AGROFOREST_KEY, ESA_AGROFORESTRY_BIOPHYSICAL_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
+            (LULC_MANGROVES_KEY, ESA_AGROFORESTRY_BIOPHYSICAL_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
+            #(LULC_ESA_2020_KEY, ESA_AGROFORESTRY_BIOPHYSICAL_TABLE_KEY, NEW_ESA_LUCODE_VALUE, FERTILIZER_CURRENT_KEY),
             ]:
 
         if run_sdr:
