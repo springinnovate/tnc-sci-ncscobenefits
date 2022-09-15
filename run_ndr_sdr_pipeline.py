@@ -96,7 +96,7 @@ ECOSHARD_MAP = {
     FERTILIZER_CURRENT_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/fertilizers/nci_current_n_app_md5_a7e22.tif', #doublecheck that this file's nodata is indeed -9999 next time you download it
     NEW_ESA_BIOPHYSICAL_121621_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/new_esa_biophysical_121621_md5_b0c83182473b6c2203012385187490e3.csv',
     NEW_171_181_ESA_BIOPHYSICAL_121621_TABLE_KEY: 'https://storage.googleapis.com/ecoshard-root/ci_global_restoration/new_171_181_esa_biophysical_121621_md5_515214.csv',
-    ESA_AGROFORESTRY_BIOPHYSICAL_TABLE_KEY: 'https://storage.googleapis.com/sci-ncscobenefits-spring/data/esa_biophysical_091422_md5_9e1eb7.csv',
+    ESA_AGROFORESTRY_BIOPHYSICAL_TABLE_KEY: 'https://storage.googleapis.com/sci-ncscobenefits-spring/data/esa_biophysical_091522_md5_bca5e5.csv',
     DEM_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/global_dem_3s_md5_22d0c3809af491fa09d03002bdf09748.zip',
     EROSIVITY_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/GlobalR_NoPol_compressed_md5_49734c4b1c9c94e49fffd0c39de9bf0c.tif',
     ERODIBILITY_KEY: 'https://storage.googleapis.com/ecoshard-root/key_datasets/Kfac_SoilGrid1km_GloSEM_v1.1_md5_e1c74b67ad7fdaf6f69f1f722a5c7dfb.tif',
